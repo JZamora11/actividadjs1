@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movimientos de ojos</title>
+    <link rel="stylesheet" type="text/css" href="style4.css">
+</head>
+<body>
+    <!-- EMOJI FELIZ -->
+    <div class="cara">
+        <div class="ojos">
+            <div class="ojo"></div>
+            <div class="ojo"></div>
+        </div>
+    </div>
+
+    <!-- SCRIPT / ANIMACIÓN -->
+    <script>
+        document.querySelector('body').addEventListener('mousemove', pupila);
+        function pupila(){
+            var ojo = document.querySelectorAll('.ojo');
+            ojo.forEach(function(ojo){
+                let x = (ojo.getBoundingClientRect().left) + (ojo.clientWidth / 2);
+                let y = (ojo.getBoundingClientRect().top) + (ojo.clientHeight / 2);
+                let radian = Math.atan2(event.pageX - x, event.pageY - y);
+                let rot = (radian * (180 / Math.PI) * -1) + 270;
+                ojo.style.transform = "rotate("+ rot +"deg)";
+            })
+        }
+    </script>
+</body>
+</html>
